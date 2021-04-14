@@ -335,7 +335,7 @@ int main()
   int choice;
   vline('-');
 
-  cout<<"\n\t\t\t\t****Gold Bus Travel Agency****"<<endl<<endl;
+  cout<<"\n\t\t\t\t****Turquoise Bus Travel Agency****"<<endl<<endl;
   vline('-');
   while(1)
   {
