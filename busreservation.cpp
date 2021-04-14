@@ -310,7 +310,7 @@ void a::displaybus()
 
   {
 
-    vline('*');
+    vline('~');
 
     cout<<"\nBus ID:"<<bus[n].busid<<"\tAC or Non-AC:"<<bus[n].actype<<"\t\tArrival time:"<<bus[n].arrival<<"\tDeparture Time:"
 
@@ -341,7 +341,7 @@ int main()
   {
  
   cout<<endl;
-  vline('*');
+  vline('^');
   cout<<"\n\n";
  
   cout<<"Select the choice number.\n";
