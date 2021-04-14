@@ -13,7 +13,7 @@ class a
   char busid[10], arrival[10], depart[10], from[10], to[10], actype[10],seat[8][4][10];
 
 public:
-
+  void menu();                               //to select between options given
   void details();                           //to enter the details;
   void displaybus();                       //to display available buses;
   void reserveseat();                     //to reserve the seat;
@@ -34,6 +34,62 @@ void vline(char ch)
 
   cout<<ch;
 
+}
+void a::menu(){
+   int choice;
+  vline('-');
+
+  cout<<"\n\t\t\t\t****Gold Bus Travel Agency****"<<endl<<endl;
+  vline('-');
+  while(1)
+  {
+ 
+  cout<<endl;
+  vline('*');
+  cout<<"\n\n";
+ 
+  cout<<"Select the choice number.\n";
+  cout<<"1.Enter the bus Details:\n"<<"2.Buses Available:\n"
+
+  <<"3.Show the available seats in a bus:\n"
+
+  <<"4.Reserve seat: \n"
+
+  <<"5.Exit";
+  cout<<endl;
+  vline('*');
+  cout<<"\nEnter your choice:";
+
+  cin>>choice;
+ 
+  switch(choice)
+
+  {
+
+    case 1:  bus[p].details();
+
+      break;
+
+    case 2:  bus[0].displaybus();
+
+      break;
+
+    case 3:  bus[0].displayavailableseats();
+
+      break;
+
+    case 4:  bus[p].reserveseat();
+
+      break;
+
+    case 5: {
+      cout<<"Successfully Logged out from the Application. Visit Again!"<<endl<<"<Thanks You :)"<<endl;
+      exit(0);
+    };
+
+  }
+
+}
 }
 
 void a::details()
@@ -333,60 +389,7 @@ int main()
   cout<<"\nEnter Password: ";
   cin>>pass;
   cout<<"\nYou successfully logged in!"<<endl;
-  int choice;
-  vline('-');
-
-  cout<<"\n\t\t\t\t****Gold Bus Travel Agency****"<<endl<<endl;
-  vline('-');
-  while(1)
-  {
- 
-  cout<<endl;
-  vline('*');
-  cout<<"\n\n";
- 
-  cout<<"Select the choice number.\n";
-  cout<<"1.Enter the bus Details:\n"<<"2.Buses Available:\n"
-
-  <<"3.Show the available seats in a bus:\n"
-
-  <<"4.Reserve seat: \n"
-
-  <<"5.Exit";
-  cout<<endl;
-  vline('*');
-  cout<<"\nEnter your choice:";
-
-  cin>>choice;
- 
-  switch(choice)
-
-  {
-
-    case 1:  bus[p].details();
-
-      break;
-
-    case 2:  bus[0].displaybus();
-
-      break;
-
-    case 3:  bus[0].displayavailableseats();
-
-      break;
-
-    case 4:  bus[p].reserveseat();
-
-      break;
-
-    case 5: {
-      cout<<"Successfully Logged out from the Application. Visit Again!"<<endl<<"<Thanks You :)"<<endl;
-      exit(0);
-    };
-
-  }
-
-}
+  bus[p].menu;
 
 return 0;
 
