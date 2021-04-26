@@ -14,13 +14,14 @@ class a
 
 public:
 
-  void details();                                 //to enter the details;
-  void displaybus();                             //to display available buses;
-  void reserveseat();                           //to reserve the seat;
-  void empty();                                //to initiallize all bus seat are vaccant;
-  void displayavailableseats();               //to display available seats;
-  void displayreservedseats(int i);          //to pass data regarding reserved seat to display seat;
+  void details();        //to enter the details;
+  void displaybus();    //to display available buses;
+  void reserveseat();  //to reserve the seat;
+  void vaccant();       //to initiallize all bus seat are vaccant;
+  void displayavailableseats();
+  void displayreservedseats(int i);
  
+
 }
 
 bus[10];
@@ -63,7 +64,7 @@ void a::details()
 
   cin>>bus[p].to;
 
- bus[p].empty();
+ bus[p].vaccant();
 
   p++;
 
@@ -114,7 +115,7 @@ void a::reserveseat()
 
     {
 
-    if (strcmp(bus[n].seat[seat/4][(seat%4)-1], "Empty")==0)
+    if (strcmp(bus[n].seat[seat/4][(seat%4)-1], "vaccant")==0)
 
       {
 
@@ -147,7 +148,7 @@ void a::reserveseat()
 
   }
 
-void a::empty()
+void a::vaccant()
 
 {
 
@@ -159,7 +160,7 @@ void a::empty()
 
     {
 
-      strcpy(bus[p].seat[i][j], "Empty");
+      strcpy(bus[p].seat[i][j], "vaccant");
 
     }
 
@@ -221,7 +222,7 @@ while(n<=p)
 
       a++;
 
-      if(strcmp(bus[n].seat[i][j],"Empty")!=0)
+      if(strcmp(bus[n].seat[i][j],"vaccant")!=0)
 
       cout<<"\nThe seat no "<<(a-1)<<" is reserved for "<<bus[n].seat[i][j]<<".";
 
@@ -256,7 +257,7 @@ void a::displayreservedseats(int l)
 
       s++;
 
-      if(strcmp(bus[l].seat[i][j], "Empty")==0)
+      if(strcmp(bus[l].seat[i][j], "vaccant")==0)
 
         {
 
@@ -310,7 +311,7 @@ void a::displaybus()
 
   {
 
-    vline('~');
+    vline('*');
 
     cout<<"\nBus ID:"<<bus[n].busid<<"\tAC or Non-AC:"<<bus[n].actype<<"\t\tArrival time:"<<bus[n].arrival<<"\tDeparture Time:"
 
@@ -335,13 +336,13 @@ int main()
   int choice;
   vline('-');
 
-  cout<<"\n\t\t\t\t****Turquoise Bus Travel Agency****"<<endl<<endl;
+  cout<<"\n\t\t\t\t****Gold Bus Travel Agency****"<<endl<<endl;
   vline('-');
   while(1)
   {
  
   cout<<endl;
-  vline('^');
+  vline('*');
   cout<<"\n\n";
  
   cout<<"Select the choice number.\n";
@@ -379,7 +380,7 @@ int main()
       break;
 
     case 5: {
-      cout<<"Successfully Logged out from the Application. Visit Again!"<<endl<<"<Thanks You :)"<<endl;
+      cout<<"Successfully Logged out from the Application. Visit Again!"<<endl<<"Thanks You :)"<<endl<<"Happy journey!"<<endl;
       exit(0);
     };
 
@@ -390,5 +391,3 @@ int main()
 return 0;
 
 }
-
-
