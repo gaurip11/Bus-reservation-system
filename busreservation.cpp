@@ -22,7 +22,6 @@ void route_bus();
 void seat_detail_bus();
 void booking();
 void renew_bus();
-void search_booking();
 void cancel_booking();
 
 
@@ -30,15 +29,15 @@ void cancel_booking();
 
 void bus::controll()
 {
-	system("cls");  //clearing the terminal
-	p:   //variable for goto function
+	system("cls");
+	p:
 int option;
 cout<<"\n********************************************************************************************";
 cout<<"\n\t\t Welcome to Gold Bus Agency!";
 cout<<"\n********************************************************************************************";
 cout<<"\n\n\t 1. Administration mode";
 cout<<"\n\n\t 2. User mode";
-cout<<"\n\n\t Enter your choice :";
+cout<<"\n\n\t Enter your choice : ";
 cin>>option;
 switch(option)
 {
@@ -59,19 +58,18 @@ goto p;
 void bus::admin()
 {
 	bus b;
-p:   //varaiable for goto function
+p:
 system("cls");
 string email,pass;
 char ch;
 int opt;
 cout<<"\n\n\t\t\t************Login***********";
-cout<<"\n\nEmail :";
+cout<<"\n\nEmail ID: ";
 cin>>email;
-cout<<"\n\nPassword :";
+cout<<"\n\nPassword : ";
 for(int i=1;i<6;i++)
 {
-//getting hidden input using getch() method
-ch= getch();  
+ch= getch();
 pass += ch;
 cout<<"*";
 }
@@ -83,7 +81,7 @@ for(int i=1;i<=5;i++)
 Sleep(500);
 cout<<".";
 }
-z:  //variable for goto functn
+z:
 cout<<"\n1. Add bus detail :";
 cout<<"\n2. Update bus details :";
 cout<<"\n3. Renew seats";
@@ -121,7 +119,7 @@ goto p;
 void bus::user_menu()
 {
 system("cls");
-p:    //variable for goto
+p:
 int choice;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 
@@ -129,10 +127,9 @@ cout<<"\n 1. View Bus detail";
 cout<<"\n 2. Routes of buses";
 cout<<"\n 3. Bus seat details";
 cout<<"\n 4. Seat booking";
-cout<<"\n 5. Search booking record";
-cout<<"\n 6. Cancel your seat";
-cout<<"\n 7. EXIT";
-cout<<"\n\n Enter your choice :";
+cout<<"\n 5. Cancel your seat";
+cout<<"\n 6. EXIT";
+cout<<"\n\n Enter your choice : ";
 cin>>choice;
 switch(choice)
 {
@@ -149,12 +146,9 @@ case 4:
     booking();
 break;
 case 5:
-    search_booking();
-break;
-case 6:
 	cancel_booking();
 break;
-case 7:
+case 6:
 	cout<<"\n\nYou have been successfully logged out. Thank you for visiting!";
 	exit(0);
 default:
@@ -271,7 +265,7 @@ else
   {
   system("cls");
   cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
-  cout<<"\n BUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
+  cout<<"\n BUS NO \tBUS NAME \tNO. OF SEATS \tAC TYPE \tDRIVER NAME";
   cout<<"\n"<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<ac_type<<"\t\t"<<d_name;
   found++;
   }
@@ -299,16 +293,11 @@ else
 {
 system("cls");
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
-  cout<<"\n\nBUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
+  cout<<"\n\nBUS NO \tBUS NAME \tNO. OF SEATS \tAC TYPE \tDRIVER NAME";
   file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   while(!file.eof())
   {
- 
- 
- 
   cout<<"\n "<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<ac_type<<"\t\t"<<d_name;
- 
- 
   file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   }
   file.close();  
@@ -344,6 +333,8 @@ cout<<"\n\n Bus name :";
 cin>>t_name;
 cout<<"\n\n No. of seats";
 cin>>t_seats;
+cout<<"\n\n AC type:";
+cin>>ac_type;
 cout<<"\n\n Driver name :";
 cin>>td_name;
 file1<<no<<" "<<t_name<<" "<<t_seats<<" "<<t_ac<<" "<<td_name<<"\n";
@@ -489,8 +480,7 @@ void bus::booking()
 	system("cls");
 	fstream file;
 	string t_no,s_b_no,customer_name,phone,from,to;
-	int found =0,s_no,seats,count=0,s_s_no,ss_no[25],i=0,s_amount,total_amount=0,r_amount;
-	char x;
+	int found =0,s_no,seats,count=0,s_s_no,ss_no,s_amount,total_amount=0,r_amount;
 	cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 	file.open("bus.txt",ios::in);
 	if(!file)
@@ -534,7 +524,6 @@ void bus::booking()
 		}
 		else if(found == 1)
 		{
-			do{
 				h:
 				cout<<"\n\n Seat no :";
 				cin>>s_no;
@@ -567,11 +556,8 @@ void bus::booking()
                     file<<t_no<<" "<<s_no<<"\n";
 				   file.close();	
 				}
-				ss_no[i] = s_no;
-				i++;
-				cout<<"\n\n Booking another seat (Y,N) :";
-				cin>>x;
-			}while(x == 'Y' || x == 'y' );
+				ss_no = s_no;
+	
 			system("cls");
 			cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 			cout<<"\n\n Customer name :";
@@ -584,12 +570,12 @@ void bus::booking()
 			cin>>to;
 			cout<<"\n\n Single amount :";
 			cin>>s_amount;
-			total_amount = s_amount*i;
+			total_amount = s_amount;
 			cout<<"\n\n Total amount : "<<total_amount;
-			cout<<"\n\n Receive Amount :";
+			cout<<"\n\n Paid amount : ";
 			cin>>r_amount;
 			file.open("customer.txt",ios::app|ios::in);
-			file<<customer_name<<" "<<t_no<<" "<<phone<<" "<<i<<" "<<total_amount<<"\n";
+			file<<customer_name<<" "<<t_no<<" "<<phone<<" "<<" "<<total_amount<<"\n";
 			file.close();
 			system("cls");
 				cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
@@ -599,18 +585,11 @@ void bus::booking()
 	            cout<<"\n\n\t\tCustomer name :                 "<<customer_name;
 	            cout<<"\n\n\t\tFrom :                          "<<from;
 	            cout<<"\n\n\t\tTo :                            "<<to;
-	            cout<<"\n\n\t\tTotal seats :                   "<<i;
-	            cout<<"\n\n\t\tReserved seats :                  ";
-	            for(int a=0;a<i;a++)
-	            {
-	            	if( a != 0)
-	            	cout<<",";
-	            	cout<<ss_no[a];
-				}
-				cout<<"\n\n\t\tSingle seat amount : "<<s_amount;
-				cout<<"\n\n\t\tTotal amount :       "<<total_amount;
-				cout<<"\n\n\t\tReceieved amount :   "<<r_amount;
-	            cout<<"\n\n\t\tReturn amount :      "<<r_amount-total_amount;
+	            cout<<"\n\n\t\tReserved seat :                 "<<ss_no;
+				cout<<"\n\n\t\tSingle seat amount :            "<<s_amount;
+				cout<<"\n\n\t\tTotal amount :                  "<<total_amount;
+				cout<<"\n\n\t\tReceieved amount :              "<<r_amount;
+	            cout<<"\n\n\t\tReturn amount :                 "<<r_amount-total_amount;
 	            cout<<"\n\n\t\t***************************************************************";
 	            cout<<"\n\n\t\t    Thank you for booking! Take safety measures for Covid-19.";
 	            cout<<"\n\n\t\t    Happy journey!";
@@ -712,7 +691,7 @@ void bus::cancel_booking()
 					file1.close();
 					remove("seat.txt");
 					rename("seat1.txt","seat.txt");
-					cout<<"\n\nCancelled your ticket successfully";
+					cout<<"\n\nDeleted booking record successfully";
 					found++;
 				   	goto h;
 				}
@@ -727,60 +706,11 @@ void bus::cancel_booking()
 		}
 }
 
-void bus::search_booking()
-{
-	system("cls");
-	fstream file;
-	string name,no,phone,t_name;
-	int t_seats,t_amo,found=0;
-		cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
-		file.open("customer.txt",ios::in);
-		if(!file)
-		{
-			cout<<"\n\n File oprnning error";
-	    }
-	    else
-	    {
-	    	cout<<"\n\n Customer Name :";
-	    	cin>>t_name;
-	    	file>>name>>no>>phone>>t_seats>>t_amo;
-	    	while(file.eof())
-	    	{
-	    		if(t_name == name)
-	    		{
-	    			if(found == 0)
-	    			{
-	    				system("cls");
-	    			cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
-	    		    }
-	    		    cout<<"\n\n\n Customer name :"<<name;
-	    		    cout<<"\n\n Bus no :         "<<no;
-	    		    cout<<"\n\n Phone number :   "<<phone;
-	    		    cout<<"\n\n Reserved seats : "<<t_seats;
-	    		    cout<<"\n\n Total amount :   "<<t_amo;
-	    		    cout<<"\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-	    		    found++;
-				}
-	    		file>>name>>no>>phone>>t_seats>>t_amo;
-			}
-			file.close();
-			if(found == 0)
-			{
-				cout<<"\n\n Customer name is Invalid.";
-			}
-		}
-	
-}
-
-
 main()
 {
 	bus b;
 	b.controll();
 }
-
-
-
 
 
 
