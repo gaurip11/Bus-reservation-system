@@ -23,8 +23,7 @@ void seat_detail_bus();
 void booking();
 void renew_bus();
 void search_booking();
-void update_booking();
-void del_booking();
+void cancel_booking();
 
 
 };
@@ -86,8 +85,8 @@ cout<<".";
 z:
 cout<<"\n1. Add bus detail :";
 cout<<"\n2. Update bus details :";
-cout<<"\n2. Renew seats";
-cout<<"\n3. Go back :";
+cout<<"\n3. Renew seats";
+cout<<"\n4. Go back :";
 cout<<"\nEnter your choice :";
 cin>>opt;
 switch(opt)
@@ -128,11 +127,10 @@ cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 cout<<"\n 1. View Bus detail";
 cout<<"\n 2. Routes of buses";
 cout<<"\n 3. Bus seat details";
-cout<<"\n 4. Booking record";
+cout<<"\n 4. Seat booking";
 cout<<"\n 5. Search booking record";
-cout<<"\n 6. Update booking record";
-cout<<"\n 7. Delete booking record";
-cout<<"\n 8. EXIT";
+cout<<"\n 6. Cancel your seat";
+cout<<"\n 7. EXIT";
 cout<<"\n\n Enter your choice :";
 cin>>choice;
 switch(choice)
@@ -153,12 +151,9 @@ case 5:
     search_booking();
 break;
 case 6:
-	update_booking();
+	cancel_booking();
 break;
 case 7:
-	del_booking();
-break;
-case 8:
 	cout<<"\n\nYou have been successfully logged out. Thank you for visiting!";
 	exit(0);
 default:
@@ -656,80 +651,8 @@ void bus::renew_bus()
 		}
 }
 
-void bus::update_booking()
-{
-	system("cls");
-	fstream file,file1;
-	int t_seats,t_amo,found=0,del_seats,i=0;
-	string name,no,phone,t_phone,del_no;
-		cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
-		file.open("customer.txt",ios::in);
-		if(!file)
-		{
-			cout<<"\n\n File openning error";
-		}
-		else
-		{
-			cout<<"\n\nEnter your phone number : ";
-			cin>>t_phone;
-			file>>name>>no>>phone>>t_seats>>t_amo;
-			while(!file.eof())
-			{
-				if(t_phone == phone)
-				{
-				   	file.close();
-				   	file.open("customer.txt",ios::in);
-				   	file1.open("customer1.txt",ios::app|ios::out);
-				   	file>>name>>no>>phone>>t_seats>>t_amo;
-				   	while(!file.eof())
-				   	{
-				   		if(t_phone == phone)
-				   		{
-				   			del_no = no;
-				   			del_seats =  t_seats;
-						}
-				   		if(t_phone != phone)
-				   		{
-				   		    file<<name<<" "<<no<<" "<<phone<<" "<<t_seats<<" "<<t_amo<<"\n";
-						}
-				   		file>>name>>no>>phone>>t_seats>>t_amo;
-					}
-					file.close();
-					file1.close();
-					remove("customer.txt");
-					rename("customer1.txt","customer.txt");
-					file.open("seat.txt",ios::in);
-					file1.open("seat1.txt",ios::app|ios::out);
-					file>>no>>t_seats;
-					while(!file.eof())
-					{
-						if(!(del_no == no && i < del_seats))
-						{
-							file1<<no<<" "<<t_seats<<"\n";
-						}
-						file>>no>>t_seats;
-					}
-					file.close();
-					file1.close();
-					remove("seat.txt");
-					rename("seat1.txt","seat.txt");
-					booking();
-					cout<<"\n\nUpdated your record successfully.";
-					found++;
-				   	goto h;
-				}
-				file>>name>>no>>phone>>t_seats>>t_amo;
-			}
-			file.close();
-			h:
-				if(found == 0)
-				{
-					cout<<"\n\n Phone number is invalid";
-				}
-		}
-}
 
-void bus::del_booking()
+void bus::cancel_booking()
 {
 	system("cls");
 	fstream file,file1;
@@ -852,6 +775,7 @@ main()
 	bus b;
 	b.controll();
 }
+
 
 
 
