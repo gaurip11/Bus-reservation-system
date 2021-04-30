@@ -30,8 +30,8 @@ void cancel_booking();
 
 void bus::controll()
 {
-	system("cls");
-	p:
+	system("cls");  //clearing the terminal
+	p:   //variable for goto function
 int option;
 cout<<"\n********************************************************************************************";
 cout<<"\n\t\t Welcome to Gold Bus Agency!";
@@ -59,7 +59,7 @@ goto p;
 void bus::admin()
 {
 	bus b;
-p:
+p:   //varaiable for goto function
 system("cls");
 string email,pass;
 char ch;
@@ -70,7 +70,8 @@ cin>>email;
 cout<<"\n\nPassword :";
 for(int i=1;i<6;i++)
 {
-ch= getch();
+//getting hidden input using getch() method
+ch= getch();  
 pass += ch;
 cout<<"*";
 }
@@ -82,7 +83,7 @@ for(int i=1;i<=5;i++)
 Sleep(500);
 cout<<".";
 }
-z:
+z:  //variable for goto functn
 cout<<"\n1. Add bus detail :";
 cout<<"\n2. Update bus details :";
 cout<<"\n3. Renew seats";
@@ -120,7 +121,7 @@ goto p;
 void bus::user_menu()
 {
 system("cls");
-p:
+p:    //variable for goto
 int choice;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 
