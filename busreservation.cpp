@@ -7,7 +7,7 @@ using namespace std;
 class bus
 {
 private:
-string b_no,b_name,d_name;
+string b_no,b_name,ac_type,d_name;
 int b_seats;
 public:
 void controll();
@@ -168,7 +168,7 @@ void bus::new_bus()
 p:
 system("cls");
 fstream file;
-string t_no,tb_name,td_name;
+string t_no,tb_name,td_name,t_ac;
 int t_seats,found=0;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 cout<<"\n\n Bus no:";
@@ -177,31 +177,33 @@ cout<<"\n\n Bus name :";
 cin>>b_name;
 cout<<"\n\n Total seats :";
 cin>>b_seats;
+cout<<"\n\n AC type :";
+cin>>ac_type;
 cout<<"\n\n Driver name :";
 cin>>d_name;
 file.open("bus.txt",ios::in);
 if(!file)
 {
 file.open("bus.txt",ios::app|ios::out);
-file<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<d_name<<"\n";
+file<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<ac_type<<" "<<d_name<<"\n";
 file.close();
 }
 else
 {
-file>>t_no>>tb_name>>t_seats>>td_name;
+file>>t_no>>tb_name>>t_seats>>t_ac>>td_name;
 while(!file.eof())
 {
 if(b_no==t_no)
 {
 found++;
 }
-file>>t_no>>tb_name>>t_seats>>td_name;
+file>>t_no>>tb_name>>t_seats>>t_ac>>td_name;
 }
 file.close();
 if(found==0)
 {
   file.open("bus.txt",ios::app|ios::out);
-  file<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<d_name<<"\n";
+  file<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<ac_type<<" "<<d_name<<"\n";
   file.close();
 }
 else
@@ -261,7 +263,7 @@ cout<<"\n\n File openning error.";
 }
 else
 {
-  file>>b_no>>b_name>>b_seats>>d_name;
+  file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   while(!file.eof())
   {
   if(t_no == b_no)
@@ -269,10 +271,10 @@ else
   system("cls");
   cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
   cout<<"\n BUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
-  cout<<"\n "<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<d_name;
+  cout<<"\n"<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<ac_type<<"\t\t"<<d_name;
   found++;
   }
-  file>>b_no>>b_name>>b_seats>>d_name;
+  file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   }
   file.close();
   if(found==0)
@@ -297,16 +299,16 @@ else
 system("cls");
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
   cout<<"\n\nBUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
-  file>>b_no>>b_name>>b_seats>>d_name;
+  file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   while(!file.eof())
   {
  
  
  
-  cout<<"\n "<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<d_name;
+  cout<<"\n "<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<ac_type<<"\t\t"<<d_name;
  
  
-  file>>b_no>>b_name>>b_seats>>d_name;
+  file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
   }
   file.close();  
 }
@@ -317,7 +319,7 @@ void bus::update_bus()
 {
 system("cls");
 fstream file,file1;
-string t_no,no,t_name,td_name;
+string t_no,no,t_name,t_ac,td_name;
 int t_seats,found=0;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 file.open("bus.txt",ios::in);
@@ -330,7 +332,7 @@ else
 cout<<"\n\n Bus no:";
 cin>>t_no;
 file1.open("bus1.txt",ios::app|ios::out);
-file>>b_no>>b_name>>b_seats>>d_name;
+file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 while(!file.eof())
 {
 if(t_no == b_no)
@@ -343,15 +345,15 @@ cout<<"\n\n No. of seats";
 cin>>t_seats;
 cout<<"\n\n Driver name :";
 cin>>td_name;
-file1<<no<<" "<<t_name<<" "<<t_seats<<" "<<td_name<<"\n";
+file1<<no<<" "<<t_name<<" "<<t_seats<<" "<<t_ac<<" "<<td_name<<"\n";
 cout<<"\n\n Updated bus record successfully";
 found++;
 }
 else
 {
-file1<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<d_name<<"\n";
+file1<<b_no<<" "<<b_name<<" "<<b_seats<<" "<<ac_type<<" "<<d_name<<"\n";
 }
-file>>b_no>>b_name>>b_seats>>d_name;
+file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 }
 file.close();
 file1.close();
@@ -457,7 +459,7 @@ else
 		file1>>s_b_no>>s_no;
 	}
 	file1.close();
-	file>>b_no>>b_name>>b_seats>>d_name;
+	file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 	while(!file.eof())
 	{
 		if(t_no == b_no)
@@ -469,7 +471,7 @@ else
 			cout<<"\n\n Empty no. of seats :"<<b_seats-count;
 			found++;
 		}
-		file>>b_no>>b_name>>b_seats>>d_name;
+		file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 	}
 	file.close();
 	if(found == 0)
@@ -514,7 +516,7 @@ void bus::booking()
 		file.close();
     	}
 		file.open("bus.txt",ios::in);
-		file>>b_no>>b_name>>b_seats>>d_name;
+		file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 		while(!file.eof())
 		{
 			if(t_no == b_no)
@@ -522,7 +524,7 @@ void bus::booking()
 				seats = b_seats;
 				found++;
 			}
-			file>>b_no>>b_name>>b_seats>>d_name;
+			file>>b_no>>b_name>>b_seats>>ac_type>>d_name;
 		}
 		file.close();
 		if(seats-count == 0)
@@ -775,6 +777,7 @@ main()
 	bus b;
 	b.controll();
 }
+
 
 
 
