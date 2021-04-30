@@ -283,10 +283,10 @@ cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 cout<<"\n 1. View Bus detail";
 cout<<"\n 2. Routes of buses";
 cout<<"\n 3. Bus seat details";
-cout<<"\n 4. Booking record";
+cout<<"\n 4. Book seat";
 cout<<"\n 5. Search booking record";
 cout<<"\n 6. Update booking record";
-cout<<"\n 7. Delete booking record";
+cout<<"\n 7. Cancel ticket";
 cout<<"\n 8. Go to main menu";
 cout<<"\n\n Enter your choice :";
 cin>>choice;
@@ -411,6 +411,7 @@ string t_no;
 fstream file;
 int found=0;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+cout<<"\n\n SINGLE BUS INFORMATION";
 cout<<"\n\n Bus no :";
 cin>>t_no;
 file.open("bus.txt",ios::in);
@@ -427,6 +428,7 @@ else
   {
   system("cls");
   cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+  cout<<"\n\n SINGLE BUS INFORMATION";
   cout<<"\n BUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
   cout<<"\n "<<b_no<<"\t\t"<<b_name<<"\t\t"<<b_seats<<"\t\t"<<d_name;
   found++;
@@ -446,6 +448,7 @@ void bus::view_all_bus()
 system("cls");
 fstream file;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+cout<<"\n\n ALL BUS INFORMATION";
 file.open("bus.txt",ios::in);
 if(!file)
 {
@@ -455,6 +458,7 @@ else
 {
 system("cls");
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+cout<<"\n\n ALL BUS INFORMATION";
   cout<<"\n\nBUS NO \tBUS NAME \tNO. OF SEATS \tDRIVER NAME";
   file>>b_no>>b_name>>b_seats>>d_name;
   while(!file.eof())
@@ -479,6 +483,7 @@ fstream file,file1;
 string t_no,no,t_name,td_name;
 int t_seats,found=0;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+cout<<"\n\nUPDATE BUS INFORMATION";
 file.open("bus.txt",ios::in);
 if(!file)
 {
@@ -595,6 +600,7 @@ fstream file,file1;
 string t_no,s_b_no,s_no;
 int count=0,found=0;
 cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+cout<<"\n SEAT DETAILS";
 file.open("bus.txt",ios::in);
 file1.open("seat.txt",ios::in);
 
@@ -621,7 +627,6 @@ else
 	{
 		if(t_no == b_no)
 		{
-			cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
 			cout<<"\n\n Total no. of seats :"<<b_seats;
 			cout<<"\n\n Reserved no. of seats :"<<count;
 			cout<<"\n\n Empty no. of seats :"<<b_seats-count;
@@ -647,6 +652,7 @@ void bus::booking()
 	int found =0,s_no,seats,count=0,s_s_no,ss_no[25],i=0,s_amount,total_amount=0,r_amount;
 	char x;
 	cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+	cout<<"\n SEAT RESERVATION";
 	file.open("bus.txt",ios::in);
 	if(!file)
 	{
@@ -788,6 +794,7 @@ void bus::renew_bus()
 	fstream file;
 	char x;
 		cout<<"\n\t\t____________________Gold BUS AGENCY_____________________";
+		cout<<"\n RENEW ALL BUS SEATS";
 		file.open("seat.txt",ios::in);
 		if(!file)
 		{
@@ -816,6 +823,7 @@ void bus::update_booking()
 	int t_seats,t_amo,found=0,del_seats,i=0;
 	string name,no,phone,t_phone,del_no;
 		cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+		cout<<"\n UPDATE YOUR BOOKING";
 		file.open("customer.txt",ios::in);
 		if(!file)
 		{
@@ -889,6 +897,7 @@ void bus::del_booking()
 	int t_seats,t_amo,found=0,del_seats,i=0;
 	string name,no,phone,t_phone,del_no;
 		cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+		cout<<"\n CANCELLATION OF TICKET";
 		file.open("customer.txt",ios::in);
 		if(!file)
 		{
@@ -939,7 +948,7 @@ void bus::del_booking()
 					file1.close();
 					remove("seat.txt");
 					rename("seat1.txt","seat.txt");
-					cout<<"\n\nCancellation of ticket successful.";
+					cout<<"\n\nDeleted booking record successfully";
 					found++;
 				   	goto h;
 				}
@@ -961,6 +970,7 @@ void bus::search_booking()
 	string name,no,phone,t_name;
 	int t_seats,t_amo,found=0;
 		cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+		cout<<"\n CUSTOMER TICKET DETAILS";
 		file.open("customer.txt",ios::in);
 		if(!file)
 		{
@@ -971,7 +981,7 @@ void bus::search_booking()
 	    	cout<<"\n\n Customer Name :";
 	    	cin>>t_name;
 	    	file>>name>>no>>phone>>t_seats>>t_amo;
-	    	while(file.eof())
+	    	while(!file.eof())
 	    	{
 	    		if(t_name == name)
 	    		{
@@ -979,6 +989,7 @@ void bus::search_booking()
 	    			{
 	    				system("cls");
 	    			cout<<"\n\t\t____________________GOLD BUS AGENCY_____________________";
+	    			cout<<"\n CUSTOMER TICKET DETAILS";
 	    		    }
 	    		    cout<<"\n\n\n Customer name :"<<name;
 	    		    cout<<"\n\n Bus no :         "<<no;
@@ -1005,4 +1016,3 @@ main()
 	bus b;
 	b.controll();
 }
-
