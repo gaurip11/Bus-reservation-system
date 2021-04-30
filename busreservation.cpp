@@ -939,7 +939,7 @@ void bus::del_booking()
 					file1.close();
 					remove("seat.txt");
 					rename("seat1.txt","seat.txt");
-					cout<<"\n\nDeleted booking record successfully";
+					cout<<"\n\nCancellation of ticket successful.";
 					found++;
 				   	goto h;
 				}
