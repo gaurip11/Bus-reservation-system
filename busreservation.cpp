@@ -711,7 +711,7 @@ void bus::cancel_booking()
 					file1.close();
 					remove("seat.txt");
 					rename("seat1.txt","seat.txt");
-					cout<<"\n\nDeleted booking record successfully";
+					cout<<"\n\nCancelled your ticket successfully";
 					found++;
 				   	goto h;
 				}
