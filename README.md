@@ -24,7 +24,8 @@ FEATURES:-
 
 
 DATA STRUCTURES USED and WHY? :-
-1.ARRAYS:
+
+ 1.ARRAYS:
 
        -In an array, accessing an element is very easy by using the index number. 
        
