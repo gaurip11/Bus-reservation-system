@@ -18,9 +18,17 @@ FEATURES:-
 
      1) Works for both administrator and user
      
-     2) sign up, login, forgotten password functions
+     2) Sign up, login, Forgotten password functions
      
-     3) 
+     3) Add bus details
+     
+     4) Booking and Reservation of seats.
+     
+     5) Searching , Updating and Cancellation of seats .
+     
+     6)View bus details , Route details , Seat reservation details .
+     
+     7)Renew function helps to renewing the bus and seat details at the end of the day.
 
 
 DATA STRUCTURES USED and WHY? :-
