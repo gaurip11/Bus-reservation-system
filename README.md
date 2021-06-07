@@ -1,4 +1,4 @@
-********************---------------------------BUS_RESERVATION_SYSTEM-------------------------*******************
+                                                        BUS RESERVATION SYSTEM
 
 
 TEAM MEMBERS:-
