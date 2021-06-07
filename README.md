@@ -2,9 +2,9 @@
 
 TEAM MEMBERS:-
 
-    1. SIDDHI NALAWADE
-    2. GAURI PATIL
-    3. MRUNAL NILGILWAR
+    1. SIDDHI NALAWADE - SY (E&TC)
+    2. GAURI PATIL - SY(E&TC)
+    3. MRUNAL NILGILWAR - SY(E&TC)
 
 OBJECTIVE OF THE PROJECT:-
 
@@ -16,11 +16,11 @@ OBJECTIVE OF THE PROJECT:-
 
 FEATURES:-
 
-     1) Works for both administrator and user
+     1) Works for both administrator and user.
      
-     2) Sign up, login, Forgotten password functions
+     2) Sign up, login, Forgotten password functions.
      
-     3) Add bus details
+     3) Add bus details.
      
      4) Booking and Reservation of seats.
      
@@ -64,15 +64,15 @@ DATA STRUCTURES USED and WHY? :-
      
 WHAT DID WE LEARN FROM THIS PROJECT:-
 
-    -File handling
+    -File handling.
     
     -Some new functions such as sleep(), system("cls"), etc.
     
-    -Time and space complexity
+    -Time and space complexity.
     
-    -Organising various functions in proper manner
+    -Organising various functions in proper manner.
     
-    -Choosing efficient data structures
+    -Choosing efficient data structures.
     
     
 WHAT NEXT FOR THE PROJECT
@@ -81,20 +81,6 @@ WHAT NEXT FOR THE PROJECT
      to find window seat etc.
      
     -We will modify it by adding gender information so that it will be easy for user to choose a seat according 
-     to their comfort
+     to their comfort.
      
-    -Build a front end for proper visualization and to make it user friendly
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-
+    -Build a front end for proper visualization and to make it user friendly.
